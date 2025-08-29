@@ -1,65 +1,53 @@
-import React, { useState } from 'react'
+import { useState } from "react";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-const Userlist = () => {
-    const [showSearch, setShowSearch] = useState(false);
+
+const Userlist=()=> {
+  const [showSearch, setShowSearch] = useState(false);
+  const users = ["Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Grace"];
+
   return (
-    <div className="h-screen flex bg-[#ECFAE5]">
-      {/* User List Sidebar */}
-      <div className="w-full md:w-1/3 lg:w-1/4 bg-[#DDF6D2] border-r border-gray-300 flex flex-col">
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 bg-[#B0DB9C]">
-          <h2 className="text-lg font-semibold text-gray-700">Chats</h2>
-          <button
-            className="p-2 hover:bg-[#CAE8BD] rounded-full transition"
-            onClick={() => setShowSearch(!showSearch)}
-          >
-            <FaSearch className="text-gray-700" />
-          </button>
-        </div>
-
-        {/* Search Bar (animated) */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ${
-            showSearch ? "max-h-16 opacity-100" : "max-h-0 opacity-0"
-          }`}
+    <div className="bg-[#DDF6D2] border border-gray-200 rounded-2xl flex flex-col min-h-full">
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 rounded-t-2xl bg-[#B0DB9C]">
+        <h2 className="text-gray-700 font-semibold">Chats</h2>
+        <button
+          onClick={() => setShowSearch((s) => !s)}
+          className="p-2 rounded-full hover:bg-[#CAE8BD] transition"
         >
-          <div className="p-3">
-            <input
-              type="text"
-              placeholder="Search users..."
-              className="w-full p-2 rounded-lg border border-gray-300 outline-none"
-            />
-          </div>
-        </div>
+          <FaSearch className="text-green-600" />
+        </button>
+      </div>
 
-        {/* User List */}
-        <div className="flex-1 overflow-y-auto">
-          {["Alice", "Bob", "Charlie", "Diana", "Eve"].map((user, index) => (
-            <div
-              key={index}
-              className="flex items-center p-4 hover:bg-[#CAE8BD] cursor-pointer"
-            >
-              <FaUserCircle className="text-3xl text-gray-600 mr-3" />
-              <div>
-                <h3 className="text-gray-700 font-semibold">{user}</h3>
-                <p className="text-sm text-gray-500">Last message preview...</p>
-              </div>
-            </div>
-          ))}
+      {/* Animated search */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          showSearch ? "max-h-16 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="p-3">
+          <input
+            className="w-full rounded-lg border border-gray-300 p-2 outline-none"
+            placeholder="Search users…"
+          />
         </div>
       </div>
 
-      {/* Message Box */}
-      <div className="hidden md:flex flex-1 flex-col bg-[#ECFAE5]">
-        <div className="flex items-center justify-between p-4 bg-[#B0DB9C] border-b border-gray-300">
-          <h2 className="text-lg font-semibold text-gray-700">Select a Chat</h2>
-        </div>
-        <div className="flex-1 flex items-center justify-center text-gray-500">
-          <p>No chat selected</p>
-        </div>
+      {/* List */}
+      <div className="flex-1 overflow-y-auto p-2 space-y-1">
+        {users.map((u) => (
+          <button
+            key={u}
+            className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-[#CAE8BD] text-left"
+          >
+            <FaUserCircle className="text-3xl text-gray-600" />
+            <div>
+              <div className="font-medium text-gray-700">{u}</div>
+              <div className="text-sm text-gray-500">Last message preview…</div>
+            </div>
+          </button>
+        ))}
       </div>
     </div>
-  )
+  );
 }
-
 export default Userlist
