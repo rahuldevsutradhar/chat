@@ -3,6 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
+import Error from './pages/Error';
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -10,6 +11,7 @@ const App = () => {
       <Route path = "/" element ={<Layout/>}>
         <Route path = "" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="*" element={<Error />} />
       </Route>
     )
   );
