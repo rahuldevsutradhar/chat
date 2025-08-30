@@ -21,23 +21,28 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-10 h-full rounded-xl bg-[#B0DB9C] flex justify-center">
+    <nav className="w-10 h-full rounded-xl bg-[#B0DB9C] flex flex-col justify-between ">
       <ul className="flex flex-col items-center gap-4 py-5">
         {navItem.map((item, index) => (
-          <NavLink
-            
+          <NavLink       
             to={item.navLink}
-            className={({ isActive }) =>
-              `text-2xl p-1 rounded-xl transition-all duration-200 ${
-                isActive ? "text-green-700 bg-[#CAE8BD]" : "text-black"
-              } hover:shadow-md hover:shadow-white-300`
-            }
-          >
+            className={({ isActive }) =>`text-2xl p-1 rounded-xl transition-all duration-200 
+            ${ isActive ? "text-green-700 bg-[#CAE8BD]" : "text-black"} hover:shadow-md hover:shadow-white-300`}>
             {item.navbarContant}
           </NavLink>
         ))}
       </ul>
+
+      <div className="flex flex-col items-center pb-1">
+        <img
+          src=""
+          className="w-8 h-8 rounded-full border-2 border-green-600"
+        />
+        <p className="text-sm mt-2  text-black">User</p>
+      </div>
     </nav>
+
+    
   );
 };
 
