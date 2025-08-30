@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Registration from './pages/Registration';
 import Error from './pages/Error';
 import AllUser from './pages/AllUser';
+import BlockUser from './pages/BlockUser';
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -13,6 +14,7 @@ const App = () => {
         <Route path = "" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/allUser" element={<AllUser />} />
+        <Route path="/blockUser" element={<BlockUser />} />
         <Route path="*" element={<Error />} />
       </Route>
     )
